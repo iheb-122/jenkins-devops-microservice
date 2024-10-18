@@ -9,7 +9,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh "mvn --version"
-				sh "docekr --version"
+				sh "docker --version"
 				echo "Build -------------"
 				echo "PATH - $PATH"
 			}
