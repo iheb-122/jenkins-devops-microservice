@@ -1,8 +1,24 @@
-node {
-	stage('Build') {
-		echo "Build"
+pipeline {
+	agent any
+	environment {
+		dockerHome= tool "myDocker"
+		mavenHome = tool "myMaven"
+		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
-	stage('Test') {
-		echo "Test"
+	stages{
+		stage('Build') {
+			steps {
+				sh "mvn --version"
+				sh "docekr --version"
+				echo "Build -------------"
+				echo "PATH - $PATH"
+			}
+		}
+		stage('Test') {
+			steps {
+				echo "Testing stage"
+			}
+		}
+
 	}
 }
